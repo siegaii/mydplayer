@@ -12,22 +12,23 @@ class ContextMenu {
             }
         });
 
-        this.player.container.addEventListener('contextmenu', (e) => {
-            if (this.shown) {
-                this.hide();
-                return;
-            }
+        // Disable contextmenu，this verion can't require
+        // this.player.container.addEventListener('contextmenu', (e) => {
+        //     if (this.shown) {
+        //         this.hide();
+        //         return;
+        //     }
 
-            const event = e || window.event;
-            event.preventDefault();
+        //     const event = e || window.event;
+        //     event.preventDefault();
 
-            const clientRect = this.player.container.getBoundingClientRect();
-            this.show(event.clientX - clientRect.left, event.clientY - clientRect.top);
+        //     const clientRect = this.player.container.getBoundingClientRect();
+        //     this.show(event.clientX - clientRect.left, event.clientY - clientRect.top);
 
-            this.player.template.mask.addEventListener('click', () => {
-                this.hide();
-            });
-        });
+        //     this.player.template.mask.addEventListener('click', () => {
+        //         this.hide();
+        //     });
+        // });
     }
 
     show(x, y) {
