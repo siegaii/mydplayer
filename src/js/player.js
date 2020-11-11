@@ -623,4 +623,5 @@ class DPlayer {
     }
 }
 
+window.DPlayer = DPlayer;
 export default DPlayer;
