@@ -1,7 +1,7 @@
 {
     "name": "dplayer",
-    "version": "1.26.0",
-    "description": "Wow, such a lovely HTML5 danmaku video player",
+    "version": "0.0.1",
+    "description": "DIY DPlayer",
     "main": "dist/DPlayer.min.js",
     "scripts": {
         "start": "npm run dev",
@@ -18,7 +18,7 @@
         "dist"
     ],
     "repository": {
-        "url": "git+https://github.com/DIYgod/DPlayer.git",
+        "url": "git+https://github.com/siegaii/mydplayer.git",
         "type": "git"
     },
     "keywords": [
