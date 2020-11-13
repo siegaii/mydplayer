@@ -622,6 +622,4 @@ class DPlayer {
         return DPLAYER_VERSION;
     }
 }
-
-window.DPlayer = DPlayer;
 export default DPlayer;
