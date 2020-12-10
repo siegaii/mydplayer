@@ -1,6 +1,7 @@
 import Icons from './icons';
 import tplPlayer from '../template/player.art';
 import utils from './utils';
+import { emojiUrl } from './emoji';
 
 class Template {
     constructor(options) {
@@ -27,6 +28,7 @@ class Template {
                 url: this.options.video.url,
                 subtitle: this.options.subtitle,
             },
+            emojiUrl,
         });
 
         this.volumeBar = this.container.querySelector('.dplayer-volume-bar-inner');
@@ -98,6 +100,10 @@ class Template {
         this.infoDanmakuId = this.container.querySelector('.dplayer-info-panel-item-danmaku-id .dplayer-info-panel-item-data');
         this.infoDanmakuApi = this.container.querySelector('.dplayer-info-panel-item-danmaku-api .dplayer-info-panel-item-data');
         this.infoDanmakuAmount = this.container.querySelector('.dplayer-info-panel-item-danmaku-amount .dplayer-info-panel-item-data');
+
+        // mydeplayer
+        this.mydplayerEmoji = this.container.querySelector('.mydplayer-emoji');
+        this.mydplayerCommentEmoji = this.container.querySelector('.mydplayer-comment-emoji');
     }
 }
 

@@ -21,7 +21,7 @@
 <div class="dplayer-controller-mask"></div>
 <div class="dplayer-controller">
     <div class="dplayer-icons dplayer-comment-box">
-        <button class="dplayer-icon dplayer-comment-setting-icon" data-balloon="{{ tran('Setting') }}" data-balloon-pos="up">
+        <button style="display:none" class="dplayer-icon dplayer-comment-setting-icon" data-balloon="{{ tran('Setting') }}" data-balloon-pos="up">
             <span class="dplayer-icon-content">{{@ icons.pallette }}</span>
         </button>
         <div class="dplayer-comment-setting-box">
@@ -67,6 +67,14 @@
                     <span>{{ tran('Bottom') }}</span>
                 </label>
             </div>
+        </div>
+        <button class="dplayer-icon dplayer-comment-setting-icon mydplayer-emoji" data-balloon="{{ tran('Setting') }}" data-balloon-pos="up">
+            <span class="dplayer-icon-content">{{@ icons.emoji }}</span>
+        </button>
+        <div class="mydplayer-comment-emoji">
+            {{each emojiUrl}}
+                <img index="{{$index}}" src="{{$value}}" />
+            {{/each}}
         </div>
         <input class="dplayer-comment-input" type="text" placeholder="{{ tran('Input danmaku, hit Enter') }}" maxlength="60">
         <button class="dplayer-icon dplayer-send-icon" data-balloon="{{ tran('Send') }}" data-balloon-pos="up">

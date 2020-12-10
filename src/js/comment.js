@@ -1,4 +1,5 @@
 import utils from './utils';
+import { emojiName } from './emoji';
 
 class Comment {
     constructor(player) {
@@ -13,6 +14,11 @@ class Comment {
         this.player.template.commentSettingButton.addEventListener('click', () => {
             this.toggleSetting();
         });
+
+        // mydepalyer
+        this.player.template.mydplayerEmoji.addEventListener('click', () => this.toggleEmoji());
+
+        this.player.template.mydplayerCommentEmoji.addEventListener('click', (event) => event.target.tagName === 'IMG' && (this.player.template.commentInput.value += emojiName[Number(event.target.getAttribute('index'))]));
 
         this.player.template.commentColorSettingBox.addEventListener('click', () => {
             const sele = this.player.template.commentColorSettingBox.querySelector('input:checked+span');
@@ -68,6 +74,14 @@ class Comment {
             this.hideSetting();
         } else {
             this.showSetting();
+        }
+    }
+
+    toggleEmoji() {
+        if (this.player.template.mydplayerCommentEmoji.classList.contains('mydplayer-emoji-open')) {
+            this.player.template.mydplayerCommentEmoji.classList.remove('mydplayer-emoji-open');
+        } else {
+            this.player.template.mydplayerCommentEmoji.classList.add('mydplayer-emoji-open');
         }
     }
 
