@@ -18,7 +18,7 @@ class Danmaku {
         this.unlimited = this.options.unlimited;
         this._measure('');
 
-        this.load();
+        // this.load();
     }
 
     load() {
@@ -92,14 +92,14 @@ class Danmaku {
             color: dan.color,
             type: dan.type,
         };
-        this.options.apiBackend.send({
-            url: this.options.api.address + 'v3/',
-            data: danmakuData,
-            success: callback,
-            error: (msg) => {
-                this.options.error(msg || this.options.tran('Danmaku send failed'));
-            },
-        });
+        // this.options.apiBackend.send({
+        //     url: this.options.api.address + 'v3/',
+        //     data: danmakuData,
+        //     success: callback,
+        //     error: (msg) => {
+        //         this.options.error(msg || this.options.tran('Danmaku send failed'));
+        //     },
+        // });
 
         this.dan.splice(this.danIndex, 0, danmakuData);
         this.danIndex++;
@@ -110,6 +110,7 @@ class Danmaku {
             border: `2px solid ${this.options.borderColor}`,
         };
         this.draw(danmaku);
+        callback();
 
         this.events && this.events.trigger('danmaku_send', danmakuData);
     }
@@ -309,13 +310,7 @@ class Danmaku {
     }
 
     htmlEncode(str) {
-        return str
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#x27;')
-            .replace(/\//g, '&#x2f;');
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;').replace(/\//g, '&#x2f;');
     }
 
     resize() {
