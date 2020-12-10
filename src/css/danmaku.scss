@@ -7,12 +7,19 @@
     font-size: 22px;
     color: #fff;
     .dplayer-danmaku-item {
-        display: inline-block;
+        display: flex;
+        align-items: center;
         pointer-events: none;
         user-select: none;
         cursor: default;
         white-space: nowrap;
         text-shadow: .5px .5px .5px rgba(0, 0, 0, .5);
+        img {
+            width: 20px;
+            height: 20px;
+            margin: 0 3px;
+            background: none;
+        }
         &--demo {
             position: absolute;
             visibility: hidden;

@@ -213,11 +213,7 @@ class Danmaku {
                 const item = document.createElement('div');
                 item.classList.add('dplayer-danmaku-item');
                 item.classList.add(`dplayer-danmaku-${dan[i].type}`);
-                if (dan[i].border) {
-                    item.innerHTML = `<span style="border:${dan[i].border}">${dan[i].text}</span>`;
-                } else {
-                    item.innerHTML = dan[i].text;
-                }
+                item.innerHTML = this.getDanmakuHtml(dan[i]);
                 item.style.opacity = this._opacity;
                 item.style.color = utils.number2Color(dan[i].color);
                 item.addEventListener('animationend', () => {
@@ -354,6 +350,53 @@ class Danmaku {
             bottom: `${(isFullScreen ? 6 : 4) / rate}s`,
         };
         return animations[position];
+    }
+
+    getDanmakuHtml(dan) {
+        const msg = dan.text;
+        const arr = getMessageArr(msg);
+        return getHtml(arr);
+
+        function getMessageArr(msg) {
+            const reg = /\[[\u4E00-\u9FA5_a-zA-Z0-9]*\]/;
+            const messageArr = [];
+            getArr(msg);
+            return messageArr;
+
+            function getArr(msg) {
+                if (!msg) {
+                    return;
+                }
+
+                const matchMsg = msg.match(reg);
+                if (!matchMsg) {
+                    msg && messageArr.push(msg);
+                    return;
+                }
+
+                const targetStr = matchMsg[0];
+                const targetStrIndex = matchMsg.index;
+                const targetStrBefore = msg.slice(0, targetStrIndex);
+
+                targetStrBefore && messageArr.push(targetStrBefore);
+                messageArr.push(targetStr);
+
+                msg = msg.replace(targetStrBefore + targetStr, '');
+                getArr(msg);
+            }
+        }
+
+        function getHtml(arr) {
+            let html = '';
+            arr.map((item) => {
+                if (item.match(/\[[\u4E00-\u9FA5_a-zA-Z0-9]*\]/)) {
+                    html += `<img src="${utils.emojiUrlMap[item]}"/>`;
+                } else {
+                    html += `<span>${item}</span>`;
+                }
+            });
+            return html;
+        }
     }
 }
 

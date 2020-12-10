@@ -87,7 +87,6 @@ class Comment {
                 type: parseInt(this.player.container.querySelector('.dplayer-comment-setting-type input:checked').value),
             },
             () => {
-                console.log(123);
                 this.player.template.commentInput.value = '';
                 this.hide();
             }
