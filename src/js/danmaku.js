@@ -387,14 +387,9 @@ class Danmaku {
         }
 
         function getHtml(arr) {
-            let html = '';
-            arr.map((item) => {
-                if (item.match(/\[[\u4E00-\u9FA5_a-zA-Z0-9]*\]/)) {
-                    html += `<img src="${utils.emojiUrlMap[item]}"/>`;
-                } else {
-                    html += `<span>${item}</span>`;
-                }
-            });
+            let html = dan.border ? `<span style="border:${dan.border}">` : `<span>`;
+            arr.map((item) => (item.match(/\[[\u4E00-\u9FA5_a-zA-Z0-9]*\]/) && utils.emojiUrlMap[item] ? (html += `<img src="${utils.emojiUrlMap[item]}"/>`) : (html += `<span>${item}</span>`)));
+            html += `</span>`;
             return html;
         }
     }
