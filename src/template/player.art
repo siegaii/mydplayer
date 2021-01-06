@@ -73,7 +73,9 @@
         </button>
         <div class="mydplayer-comment-emoji">
             {{each emojiUrl}}
+            <div class="emojiBox">
                 <img index="{{$index}}" src="{{$value}}" />
+            </div>
             {{/each}}
         </div>
         <input class="dplayer-comment-input" type="text" placeholder="{{ tran('Input danmaku, hit Enter') }}" maxlength="60">
