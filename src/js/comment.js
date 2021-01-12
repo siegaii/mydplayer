@@ -57,6 +57,7 @@ class Comment {
         this.player.template.controller.classList.remove('dplayer-controller-comment');
         this.player.template.mask.classList.remove('dplayer-mask-show');
         this.player.container.classList.remove('dplayer-show-controller');
+        this.player.template.mydplayerCommentEmoji.classList.remove('mydplayer-emoji-open');
         this.player.controller.disableAutoHide = false;
         this.hideSetting();
     }
